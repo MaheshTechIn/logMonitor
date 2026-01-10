@@ -11,4 +11,6 @@ public interface LogRepository extends JpaRepository<LogEntity, Long> {
     Page<LogEntity> findByLevel(String level, Pageable pageable);
     Page<LogEntity> findByService(String service, Pageable pageable);
     Page<LogEntity> findByLevelAndService(String level, String service, Pageable pageable);
+
+    long countByLevel(String level);
 }

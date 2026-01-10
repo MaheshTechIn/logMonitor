@@ -6,18 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/logs")
 
 public class LogController {
     @Autowired
     private LogService logService;
-//
+//   for single json data
 //    @PostMapping
 //    public String ingestLog(@RequestBody LogRequest logRequest){
 //        logService.processLog(logRequest);
 //        return "Log recieved Sucessfully";
 //    }
+
+    // for collection of data
+    @PostMapping
+    public List<LogEntity> saveLogs(@RequestBody List<LogEntity> logs) {
+        return logService.saveLogs(logs);
+    }
+
+    // 2. GET LOGS (Filtering + Pagination)
     @GetMapping
     public Page<LogEntity> getLogs(
             @RequestParam(required = false)String level,
