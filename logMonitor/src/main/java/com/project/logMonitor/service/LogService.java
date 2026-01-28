@@ -50,5 +50,4 @@ public class LogService {
     public List<LogEntity> saveLogs(List<LogEntity> logs) {
         return logRepository.saveAll(logs);
     }
-
 }
