@@ -2,6 +2,8 @@ package com.project.logMonitor.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "logs")
 public class LogEntity {
@@ -13,9 +15,12 @@ public class LogEntity {
     private String level;
     private String service;
     private String message;
-    private String timestamp;
-
-
+//    private String timestamp;
+    private LocalDateTime timestamp;
+    @PrePersist
+    public void onCreate() {
+        this.timestamp = LocalDateTime.now();
+    }
     public long getId() {
         return id;
     }
@@ -48,11 +53,11 @@ public class LogEntity {
         this.message = message;
     }
 
-    public String getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 }

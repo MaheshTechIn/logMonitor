@@ -6,6 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.domain.Page;
 
+import java.time.LocalDateTime;
+
 public interface LogRepository extends JpaRepository<LogEntity, Long> {
 
     Page<LogEntity> findByLevel(String level, Pageable pageable);
@@ -13,4 +15,10 @@ public interface LogRepository extends JpaRepository<LogEntity, Long> {
     Page<LogEntity> findByLevelAndService(String level, String service, Pageable pageable);
 
     long countByLevel(String level);
+    long countByLevelAndTimestampAfter(
+            String level,
+            LocalDateTime time
+    );
+
 }
+

@@ -1,10 +1,12 @@
 package com.project.logMonitor.dto;
 
+import java.time.LocalDateTime;
+
 public class LogRequest {
     private String level;
     private String service;
     private String message;
-    private String timestamp;
+    private LocalDateTime timestamp;
 
     public String getLevel() {
         return level;
@@ -30,11 +32,11 @@ public class LogRequest {
         this.message = message;
     }
 
-    public String getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 }
